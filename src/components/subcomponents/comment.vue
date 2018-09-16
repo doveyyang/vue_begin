@@ -3,8 +3,8 @@
         <h3>发表评论</h3>
 
         <hr>
-        <textarea placeholder="请输入要BB的内容（最多吐槽120字）" maxlength="120"></textarea>
-        <mt-button type='primary' size='large'>发表评论</mt-button>
+        <textarea placeholder="请输入要BB的内容（最多吐槽120字）" maxlength="120" v-model="msg"></textarea>
+        <mt-button type='primary' size='large' @click="postMsg">发表评论</mt-button>
             <div class="cmt-list">
                 <div class="cmt-item" v-for='(item,i) in comments' :key='item.add_time'>
                     <div class="cmt-title">
@@ -57,6 +57,7 @@ import{Toast} from 'mint-ui'
                     }
                     
                 ],//所有的评论数据
+                msg:'',
             }
         },
         created() {
@@ -79,6 +80,45 @@ import{Toast} from 'mint-ui'
             getMore(){
                 this.pageIndex ++
                 this.getpinglun()
+            },
+            postMsg(){
+                
+                if(this.msg.trim().length ===0 ){
+                    return Toast('评论内容不能为空')
+                }
+
+                // 发表评论的方法
+                //参数一：要请求的URL地址
+                // 参数二：要提交的数据对象 {content：this.msg}                
+                // 参数三：定义提交时候，表单中的数据 {emulateJSON:true} //设置post时，表单数据格式的组织形式，
+                this.$http.post('api/postcomment/'+this.$route.params.id,{
+                    content:this.msg.trim()
+                })
+                .then(()=>{
+                    if(result.body.status ===0){
+                        //1 拼接处一个评论对象
+                         var cmt = {
+                             user_name:'匿名用户',
+                             add_time:Date.now(),
+                             content:this.msg
+                         }
+                        //2 
+                        this.comments.unshift(cmt)
+                        this.msg = ''
+
+                    }
+                }).catch(()=>{
+                     
+                         var cmt = {
+                             user_name:'匿名用户',
+                             add_time:Date.now(),
+                             content:this.msg
+                         }
+                        //2 
+                        this.comments.unshift(cmt)
+                        this.msg = ''                    
+                })
+
             }
 
         }
