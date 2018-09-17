@@ -7,6 +7,11 @@ import SearchContainer from './components/tabbar/SearchContainer.vue'
 import NewsList from './components/news/NewsList.vue'
 import NewsInfo from './components/news/NewsInfo.vue'
 
+import PhotoList from './components/photos/PhotoList.vue'
+import PhotoInfo from './components/photos/PhotoInfo.vue'
+import GoodsList from './components/goods/GoodsList.vue'
+import GoodsInfo from './components/goods/GoodsInfo.vue'
+
 var router = new VueRouter({
     routes:[
        { path:'/home',component:HomeContainer },
@@ -15,9 +20,13 @@ var router = new VueRouter({
        { path:'/search',component:SearchContainer },
        { path:'/home/newslist',component:NewsList },
        { path:'/home/newsinfo/:id',component:NewsInfo },
+       { path:'/home/photolist',component:PhotoList },
+       { path:'/home/photoInfo/:id',component:PhotoInfo },
+       { path:'/home/goodslist',component:GoodsList },
+       { path:'/home/goodsinfo/:id',component:GoodsInfo ,name:'goodsinfo'},
 
     ],
-    linkActiveClass:'mui-active',//覆盖默认高亮的类，默认叫做 router-link-active
+     linkActiveClass:'mui-active',//覆盖默认高亮的类，默认叫做 router-link-active
 })
 
 //把路由对象暴露出去

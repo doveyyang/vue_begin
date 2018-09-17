@@ -58,6 +58,7 @@ import{Toast} from 'mint-ui'
                     
                 ],//所有的评论数据
                 msg:'',
+                id:this.$route.params.id,
             }
         },
         created() {
