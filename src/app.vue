@@ -12,7 +12,6 @@
         </transition>
           
         <!-- 底部Tarbar区 -->
-
         <nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item-yzw" to="/home">
 				<span class="mui-icon mui-icon-home"></span>
