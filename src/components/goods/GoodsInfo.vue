@@ -72,7 +72,7 @@ export default {
       lunbotu: [],
       goodsinfo: {},
       ballFlag: false, //小球的显示标识符,
-    selectedCount:1,//默认用户选中数量值
+      selectedCount:1,//默认用户选中数量值
     };
   },
   created() {
@@ -104,7 +104,7 @@ export default {
 
       // }
       this.goodsinfo = {
-        id: 101,
+        id: 87,
         title: "Shinco/新科 S2300 无线麦克风 无",
         add_time: "2015-04-19T19:34:55.000Z",
         goods_no: "SD3973042344",
@@ -129,7 +129,19 @@ export default {
       });
     },
     addToShopCar() {
-      this.ballFlag = !this.ballFlag;
+      this.ballFlag = !this.ballFlag;      
+      console.log('sell_price:'+this.goodsinfo.sell_price)
+      //创建一个购物车商品对象，要保存到store中car数组
+      var tgoodsInfo = {
+        id:this.id,
+        count:this.selectedCount,
+        price:this.goodsinfo.sell_price,
+        selected:true
+      }
+
+      //执行添加购物车操作
+      this.$store.commit('addToCar',tgoodsInfo)
+      
     },
     beforeEnter(el) {
       el.style.transform = "translate(0,0)";

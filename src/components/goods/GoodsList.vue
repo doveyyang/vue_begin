@@ -74,7 +74,7 @@
                     stock_quantity:60
 
                 },{
-                    id:88,
+                    id:87,
                     title:'华为荣耀6Plus 16G',
                     zhaiyao:'华为荣耀6Plus 物超所值，值得信赖',
                     click:0,
@@ -84,7 +84,7 @@
                     stock_quantity:60
 
                 },{
-                    id:89,
+                    id:87,
                     title:'华为荣耀6Plus 16G',
                     zhaiyao:'华为荣耀6Plus 物超所值，值得信赖',
                     click:0,
